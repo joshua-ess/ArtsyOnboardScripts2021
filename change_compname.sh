@@ -4,6 +4,7 @@ user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser;
 username=$(echo "${user}" | sed -e 's/\./-/g')
 compname=${username}-${serial} # need some cut/awk command to keep characters less than say 50 just in case
 
+
 sudo scutil --set ComputerName "$compname"
 sudo scutil --set HostName "$compname"
 sudo scutil --set LocalHostName "$compname"
