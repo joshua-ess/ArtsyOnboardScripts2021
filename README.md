@@ -5,9 +5,10 @@ Onboarding Scripts for Artsy Staff
     
 ### Scripts
 **account_creator.sh**  
-  creates the admin and loaner accounts  
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/account_creator.sh | sudo bash  
-  curl -L https://git.io/JG2FK | sudo bash  
+  creates the admin and loaner accounts, requires input. do not pipe to bash.  
+  curl -LO https://git.io/JG2FK  
+  chmod +x JG2FK  
+  sudo ./JG2FK
     
 **brew_installer.sh**   
   set up brew and get the base apps in  
