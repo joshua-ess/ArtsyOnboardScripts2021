@@ -57,9 +57,14 @@ unzip -P $zip_pass setup.zip
 for f in *.pkg ;
     do sudo installer -verbose -pkg "$f" -target /
 done ;
+# ok installed accounts
+
+
+
+
 
 printf -- 'downloading images \n';
-
+# https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true
 printf -- 'changing the user icon \n';
 # change user icon --- ! not working atm....
     clear
