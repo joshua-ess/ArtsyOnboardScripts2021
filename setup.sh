@@ -2,8 +2,6 @@
 # vars
 directory=/opt/artsy
 url=https://github.com/jasonarias/2021onboarding/blob/main/
-serial=$(ioreg -c IOPlatformExpertDevice -d 2 | awk -F\" '/IOPlatformSerialNumber/{print $(NF-1)}')
-user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
 # funcs
 printer () {
@@ -16,20 +14,10 @@ printf -- '\n';
 }
 
     clear
-    printf -- 'welcome to the setup.sh \n';
-    message='artsy times GO!'
+    printf -- 'welcome to the default users setup \n';
+    message='checking for directory in /opt'
     printer
     echo
-
-# root check
-# if [[ $EUID -ne 0 ]]; then
-#        echo "This script must be run with sudo privelages from the user account" 
-#           exit 1
-# fi
-
-# get the pass for the zip pkg
-read -r -s -p  "Enter Setup Password from the IT Vault in 1Pass : " zip_pass 
-printf -- '\n';
 
 # /opt check & make directory / set permissions
 if [[ -d /opt  ]]
@@ -43,9 +31,25 @@ sudo mkdir "$directory"
 sudo chown -R "$user" "$directory" 
 cd "$directory" || return
  
+    clear
+    printf -- 'directory is ready \n';
+    message='lets get the zip file'
+    printer
+    echo
+
+# get the pass for the zip pkg
+clear
+sleep 2s
+echo
+echo -n "Enter Setup Password from the IT Vault in 1Pass : "
+read -s password
+echo
+# alternate pass input method
+# read -r -s -p  "Enter Setup Password from the IT Vault in 1Pass : " zip_pass 
+# printf -- '\n';
+
 printf -- 'downloading setup file \n';
 echo
-# curl -O $url/setup.zip
 curl -o setup.zip -L "https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 unzip -P $zip_pass setup.zip
 
@@ -54,6 +58,9 @@ for f in *.pkg ;
     do sudo installer -verbose -pkg "$f" -target /
 done ;
 
+printf -- 'downloading images \n';
+
+printf -- 'changing the user icon \n';
 # change user icon --- ! not working atm....
     clear
     printf -- 'setting the user icon now \n';
@@ -91,8 +98,6 @@ rm "${PICIMPORT}"
     echo
 
 # the brewables
-# su -c '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"' $user
-# sudo -u nathan mkdir shit <- simp working examp
 sudo -u $user /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install google-chrome
 brew install google-drive
