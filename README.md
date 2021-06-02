@@ -16,7 +16,7 @@ Onboarding Scripts for Artsy Staff
   set name to user-serial number  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/change_compname.sh | sudo bash  
     
-**docktil.sh**   
+**dockutil.sh**   
   clean up the dock   
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dockutil.sh | bash  
     
