@@ -28,6 +28,7 @@ dockutil --remove 'Pages' ;
 dockutil --remove 'Numbers' ;
 dockutil --remove 'Keynote' ;
 dockutil --remove 'Safari' ;
+# get rid of podcasts, appletv, facetime, messages, itunes
 dockutil --add /Applications/Google\ Chrome.app --position 3 ;
 dockutil --add /Applications/Slack.app --position 4 ;
 dockutil --add /Applications/zoom.us.app --position 5 ;
