@@ -39,7 +39,7 @@ cd "$directory" || return
     echo
 
 curl -o setup.zip -L "$url"
-unzip -P "$password" setup.zip
+unzip -o -P "$password" setup.zip
 
 for f in *.pkg ;
     do sudo installer -verbose -pkg "$f" -target /
