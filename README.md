@@ -3,6 +3,7 @@
 Onboarding Scripts for Artsy Staff
 ---------------  
     
+### Scripts
 **account_creator.sh**  
   creates the admin and loaner accounts  
     
