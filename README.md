@@ -16,7 +16,7 @@ Onboarding Scripts for Artsy Staff
   set name to user-serial number  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/change_compname.sh | sudo bash  
     
-**dockutil.sh**   
+**dock_cleaner.sh**   
   clean up the dock   
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dockutil.sh | bash  
     
@@ -28,6 +28,9 @@ Onboarding Scripts for Artsy Staff
   removes munki install  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/remove_munki.sh | sudo bash  
     
+**set_user_icons.sh**  
+  will change users icons to a default logo  
+
 **setup.sh**  
   base setup - prob defunct already  
     
