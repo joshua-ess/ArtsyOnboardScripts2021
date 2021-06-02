@@ -32,5 +32,7 @@ Onboarding Scripts for Artsy Staff
   will change users icons to a default logo  
 
 **setup.sh**  
-  base setup - prob defunct already  
+  currently not working.  
+  should be used as a conductor for all the other scripts and use them in the right order in order  
+  to set up a new computer. 
     
