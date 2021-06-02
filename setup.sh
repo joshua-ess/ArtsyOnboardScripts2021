@@ -43,6 +43,8 @@ sudo mkdir "$directory"
 sudo chown -R "$user" "$directory" 
 cd "$directory" || return
  
+printf -- 'downloading setup file \n';
+echo
 curl -O $url/setup.zip
 unzip -P $zip_pass setup.zip
 
