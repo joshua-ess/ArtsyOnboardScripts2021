@@ -1,5 +1,4 @@
 #!/bin/bash
-# notes: check and working Nh - 02.06.21 (and yes artsyloaner as non admin)
 # vars
 directory=/tmp/artsy
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
