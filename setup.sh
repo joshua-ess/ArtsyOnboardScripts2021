@@ -22,10 +22,10 @@ printf -- '\n';
     echo
 
 # root check
-if [[ $EUID -ne 0 ]]; then
-       echo "This script must be run with sudo privelages from the user account" 
-          exit 1
-fi
+# if [[ $EUID -ne 0 ]]; then
+#        echo "This script must be run with sudo privelages from the user account" 
+#           exit 1
+# fi
 
 # get the pass for the zip pkg
 read -r -s -p  "Enter Setup Password from the IT Vault in 1Pass : " zip_pass 
