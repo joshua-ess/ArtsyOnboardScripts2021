@@ -12,25 +12,32 @@ Onboarding Scripts for Artsy Staff
 **brew_installer.sh**   
   set up brew and get the base apps in  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/brew_installer.sh | bash  
+  curl -L https://git.io/JG2F7 | bash
     
 **change_compname.sh**   
   set name to user-serial number  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/change_compname.sh | sudo bash  
+  curl -L https://git.io/JG2Fx | sudo bash
     
 **dock_cleaner.sh**   
   clean up the dock   
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dockutil.sh | bash  
+  curl -L https://git.io/JG2be | bash
     
 **promote_admin.sh**   
   moves user to admin rights  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/promote_admin.sh | sudo bash  
+  curl -L https://git.io/JG2bU | sudo bash
     
 **remove_munki.sh**   
   removes munki install  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/remove_munki.sh | sudo bash  
+  curl -L https://git.io/JG2bC | sudo bash
     
 **set_user_icons.sh**  
   will change users icons to a default logo  
+  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/set_user_icons.sh | sudo bash  
+  curl -L https://git.io/JG2bZ | sudo bash
 
 **setup.sh**  
   currently not working.  
