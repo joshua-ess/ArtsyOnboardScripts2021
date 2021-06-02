@@ -1,6 +1,6 @@
 # 2021onboarding  
 
-Onboarding Scripts for Artsy Staff  
+Onboarding Scripts for Artsy Staff
 ---------------  
     
 **account_creator.sh**  
