@@ -243,6 +243,8 @@ device=$(/usr/sbin/networksetup -listallhardwareports | awk "/$wservice/,/Ethern
 networksetup -removepreferredwirelessnetwork "$device" "PYUR 97094"
 
 # destroy thine self
+sudo softwareupdate -i -a -R 
+sudo reboot
 rm -- "$0"
 
 # notes / potential code

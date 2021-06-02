@@ -1,7 +1,13 @@
 #!/bin/bash
 # vars
-directory=/opt/artsy
-url=https://github.com/jasonarias/2021onboarding/blob/main/
+directory=/tmp/artsy
+url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
+user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+
+if [[ $EUID -ne 0 ]]; then
+       echo "This script must be run with sudo privelages from the user account" 
+          exit 1
+fi
 
 # funcs
 printer () {
@@ -12,22 +18,17 @@ for ((i=0; i<=${#string}; i++)); do
         done 
 printf -- '\n';
 }
-
     clear
-    printf -- 'welcome to the default users setup \n';
-    message='checking for directory in /opt'
+    message='account creator is alive lets go'
     printer
     echo
 
-# /opt check & make directory / set permissions
-if [[ -d /opt  ]]
-then
-       echo "/opt exists on your filesystem, proceeding"
-else
-       sudo mkdir -p /opt/
-fi
+clear
+echo -n "Enter Setup Password from the IT Vault in 1Pass : "
+read -s password
+echo
 
-sudo mkdir "$directory" 
+mkdir "$directory" 
 sudo chown -R "$user" "$directory" 
 cd "$directory" || return
  
@@ -37,26 +38,11 @@ cd "$directory" || return
     printer
     echo
 
-# get the pass for the zip pkg
-clear
-sleep 2s
-echo
-echo -n "Enter Setup Password from the IT Vault in 1Pass : "
-read -s password
-echo
-# alternate pass input method
-# read -r -s -p  "Enter Setup Password from the IT Vault in 1Pass : " zip_pass 
-# printf -- '\n';
+curl -o setup.zip -L "$url"
+unzip -P "$password" setup.zip
 
-printf -- 'downloading setup file \n';
-echo
-curl -o setup.zip -L "https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
-unzip -P $zip_pass setup.zip
-
-# install any pkg packed in 
 for f in *.pkg ;
     do sudo installer -verbose -pkg "$f" -target /
 done ;
-# ok installed accounts
 
-
+exit 0
