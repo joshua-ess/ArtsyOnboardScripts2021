@@ -91,7 +91,7 @@ rm "${PICIMPORT}"
     echo
 
 # the brewables
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+su -c '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"' $user
 brew install google-chrome
 brew install google-drive
 brew install slack
