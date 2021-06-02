@@ -45,7 +45,8 @@ cd "$directory" || return
  
 printf -- 'downloading setup file \n';
 echo
-curl -O $url/setup.zip
+# curl -O $url/setup.zip
+curl -o setup.zip -L "https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 unzip -P $zip_pass setup.zip
 
 # install any pkg packed in 
