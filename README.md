@@ -4,7 +4,7 @@ Onboarding Scripts for Artsy Staff
 ---------------  
     
 ### Scripts
-**account_creator.sh**  ✓
+**account_creator.sh**  ✓  
   creates the admin and loaner accounts, requires input. do not pipe to bash.  
   curl -LO https://git.io/JG2FK && chmod +x JG2FK && sudo ./JG2FK
     
