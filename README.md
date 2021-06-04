@@ -26,7 +26,7 @@ Onboarding Scripts for Artsy Staff
   curl -L https://git.io/JGP8E | bash     
     
 **dock_reset.sh**   
-  clean up the dock   
+  reset the dock to factory defaults   
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dock_reset.sh | bash  
   curl -L https://git.io/JGPre | bash     
     
