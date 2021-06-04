@@ -7,6 +7,7 @@ drive=/Applications/Google\ Drive.app
 slack=/Applications/Slack.app
 onepass=/Applications/1Password\ 7.app/
 zoom=/Applications/zoom.us.app
+error_message="base artsy app missing, please install apps first"
 
 # funcs
 printer () {
@@ -29,6 +30,7 @@ curl -O "$the_file"
 chmod +x dockutil
 
 # dockutil cleanups
+# get rid of podcasts, appletv, facetime, messages, itunes
 ./dockutil --remove 'Mail' ;
 ./dockutil --remove 'Contacts' ;
 ./dockutil --remove 'Calendar' ;
@@ -43,30 +45,16 @@ chmod +x dockutil
 ./dockutil --remove 'Numbers' ;
 ./dockutil --remove 'Keynote' ;
 ./dockutil --remove 'Safari' ;
-# get rid of podcasts, appletv, facetime, messages, itunes
-if [[ -d $chrome ]]
-then
-    ./dockutil --add "$chrome" --position 3 
-fi
 
-if [[ -d $drive ]]
-then
-    ./dockutil --add "$drive" --position 4 
-fi
-
-if [[ -d $slack ]]
-then
-    ./dockutil --add "$slack" --position 5
-fi
-
-
-if [[ -d $onepass ]]
-then
-    ./dockutil --add "$onepass" --position 6
-fi
-
-if [[ -d $zoom ]]
-then
-    ./dockutil --add "$zoom" --position 7 
+# check for base apps and add them in
+if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [[ -d $onepass ]]
+    then
+        ./dockutil --add "$chrome" --position 3 
+        ./dockutil --add "$drive" --position 4 
+        ./dockutil --add "$slack" --position 5
+        ./dockutil --add "$onepass" --position 6
+        ./dockutil --add "$zoom" --position 7 
+    else
+        echo "$error_message"
 fi
 
