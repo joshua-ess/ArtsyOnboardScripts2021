@@ -1,5 +1,8 @@
 #!/bin/bash
 
+directory=/tmp
+the_file=https://raw.githubusercontent.com/kcrawford/dockutil/master/scripts/dockutil
+
 # funcs
 printer () {
 string=''$message''
@@ -16,21 +19,29 @@ printf -- '\n';
     printer
     echo
 
+cd "$directory" || exit
+curl -O "$the_file"
+chmod +x dockutil
+
 # dockutil cleanups
-dockutil --remove 'Mail' ;
-dockutil --remove 'Contacts' ;
-dockutil --remove 'Calendar' ;
-dockutil --remove 'Reminders' ;
-dockutil --remove 'Maps' ;
-dockutil --remove 'Messages' ;
-dockutil --remove 'FaceTime' ;
-dockutil --remove 'Pages' ;
-dockutil --remove 'Numbers' ;
-dockutil --remove 'Keynote' ;
-dockutil --remove 'Safari' ;
+./dockutil --remove 'Mail' ;
+./dockutil --remove 'Contacts' ;
+./dockutil --remove 'Calendar' ;
+./dockutil --remove 'Reminders' ;
+./dockutil --remove 'Maps' ;
+./dockutil --remove 'Messages' ;
+./dockutil --remove 'FaceTime' ;
+./dockutil --remove 'Music' ;
+./dockutil --remove 'Podcasts' ;
+./dockutil --remove 'TV' ;
+./dockutil --remove 'Pages' ;
+./dockutil --remove 'Numbers' ;
+./dockutil --remove 'Keynote' ;
+./dockutil --remove 'Safari' ;
 # get rid of podcasts, appletv, facetime, messages, itunes
-dockutil --add /Applications/Google\ Chrome.app --position 3 ;
-dockutil --add /Applications/Slack.app --position 4 ;
-dockutil --add /Applications/zoom.us.app --position 5 ;
-dockutil --add /Applications/1Password\ 7.app/ --position 6 ;
+./dockutil --add /Applications/Google\ Chrome.app --position 3 ;
+./dockutil --add /Applications/Google\ Drive.app --position 4 ;
+./dockutil --add /Applications/Slack.app --position 5 ;
+./dockutil --add /Applications/1Password\ 7.app/ --position 6 ;
+./dockutil --add /Applications/zoom.us.app --position 7 ;
 
