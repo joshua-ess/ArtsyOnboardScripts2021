@@ -25,6 +25,31 @@ Onboarding Scripts for Artsy Staff
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dock_cleaner.sh | bash  
   curl -L https://git.io/JGP8E | bash     
     
+**dock_reset.sh**   
+  clean up the dock   
+  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dock_reset.sh | bash  
+  curl -L https://git.io/JGP8E | bash     
+    
+**promote_admin.sh**   
+  moves user to admin rights  
+  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/promote_admin.sh | sudo bash  
+  curl -L https://git.io/JG2bU | sudo bash
+    
+**remove_munki.sh**   
+  removes munki install  
+  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/remove_munki.sh | sudo bash  
+  curl -L https://git.io/JG2bC | sudo bash
+    
+**set_user_icons.sh**  
+  will change users icons to a default logo  
+  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/set_user_icons.sh | sudo bash  
+  curl -L https://git.io/JG2bZ | sudo bash
+
+**setup.sh**  
+  currently not working.  
+  should be used as a conductor for all the other scripts and use them in the right order in order  
+  to set up a new computer. 
+    
 **promote_admin.sh**   
   moves user to admin rights  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/promote_admin.sh | sudo bash  
