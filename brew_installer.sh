@@ -25,5 +25,3 @@ brew install 1password
 brew install notion
 brew install desktoppr
 brew install dockutil
-
-rm -- "$0"

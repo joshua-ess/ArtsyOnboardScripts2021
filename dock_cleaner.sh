@@ -7,6 +7,7 @@ drive=/Applications/Google\ Drive.app
 slack=/Applications/Slack.app
 onepass=/Applications/1Password\ 7.app/
 zoom=/Applications/zoom.us.app
+notion=/Applications/Notion.app
 error_message="base artsy apps missing, please install apps first"
 
 # funcs
@@ -47,13 +48,14 @@ chmod +x dockutil
 ./dockutil --remove 'Safari' ;
 
 # check for base apps and add them in
-if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [[ -d $onepass ]]
+if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [[ -d $onepass ]] && [[ -d $notion ]]
     then
         ./dockutil --add "$chrome" --position 3 
         ./dockutil --add "$drive" --position 4 
         ./dockutil --add "$slack" --position 5
         ./dockutil --add "$onepass" --position 6
         ./dockutil --add "$zoom" --position 7 
+        ./dockutil --add "$notion" --position 8
     else
         echo
         echo "---"
