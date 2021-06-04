@@ -13,4 +13,4 @@ if [[ -f $desktoppr ]]
         desktoppr "$directory/wallpaper.png"
     else
         echo "$error_message"
-
+fi
