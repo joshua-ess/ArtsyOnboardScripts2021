@@ -68,7 +68,7 @@ Onboarding Scripts for Artsy Staff
 **set_wallpaper.sh**  
   will set the wallpaper to artsy default 
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/set_wallpaper.sh | bash  
-  curl -L https://git.io/JG2bZ | bash
+  curl -L https://git.io/JGPNv | bash
     
 **setup.sh**  
   currently not working.  
