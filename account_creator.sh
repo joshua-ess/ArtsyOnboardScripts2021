@@ -1,6 +1,6 @@
 #!/bin/bash
 # vars
-directory=/tmp/artsy
+directory=/tmp/
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
@@ -28,12 +28,10 @@ echo -n "Enter Setup Password from the IT Vault in 1Pass : "
 read -s password
 echo
 
-mkdir "$directory" 
-sudo chown -R "$user" "$directory" 
 cd "$directory" || return
  
     clear
-    printf -- 'directory is ready \n';
+    printf -- 'directory is tmp \n';
     message='lets get the zip file'
     printer
     echo
@@ -44,5 +42,56 @@ unzip -o -P "$password" setup.zip
 for f in *.pkg ;
     do sudo installer -verbose -pkg "$f" -target /
 done ;
+
+# begin icon setter block
+user=artsytech
+image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
+curl -o user.tif -L "$image"
+printf -- 'changing the user icon \n';
+sudo dscl . delete /Users/"$user" jpegphoto
+sudo dscl . delete /Users/"$user" Picture
+sudo dscl . create /Users/"$user" Picture "$directory/user.tif"
+# from https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal/367667#367667
+set -e
+declare -x USERNAME="$user"
+declare -x USERPIC="$directory/user.tif"
+declare -r DSIMPORT_CMD="/usr/bin/dsimport"
+declare -r ID_CMD="/usr/bin/id"
+declare -r MAPPINGS='0x0A 0x5C 0x3A 0x2C'
+declare -r ATTRS='dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName externalbinary:dsAttrTypeStandard:JPEGPhoto'
+if [ ! -f "${USERPIC}" ]; then
+      echo "User image required"
+fi
+# Check that the username exists - exit on error
+${ID_CMD} "${USERNAME}" &>/dev/null || ( echo "User does not exist" && exit 1 )
+declare -r PICIMPORT="$(mktemp /tmp/${USERNAME}_dsimport.XXXXXX)" || exit 1
+printf "%s %s \n%s:%s" "${MAPPINGS}" "${ATTRS}" "${USERNAME}" "${USERPIC}" >"${PICIMPORT}"
+${DSIMPORT_CMD} "${PICIMPORT}" /Local/Default M &&
+        echo "Successfully imported ${USERPIC} for ${USERNAME}."
+rm "${PICIMPORT}"
+
+user=artsyloaner
+printf -- 'changing the user icon \n';
+sudo dscl . delete /Users/"$user" jpegphoto
+sudo dscl . delete /Users/"$user" Picture
+sudo dscl . create /Users/"$user" Picture "$directory/user.tif"
+# from https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal/367667#367667
+set -e
+declare -x USERNAME="$user"
+declare -x USERPIC="$directory/user.tif"
+declare -r DSIMPORT_CMD="/usr/bin/dsimport"
+declare -r ID_CMD="/usr/bin/id"
+declare -r MAPPINGS='0x0A 0x5C 0x3A 0x2C'
+declare -r ATTRS='dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName externalbinary:dsAttrTypeStandard:JPEGPhoto'
+if [ ! -f "${USERPIC}" ]; then
+      echo "User image required"
+fi
+# Check that the username exists - exit on error
+${ID_CMD} "${USERNAME}" &>/dev/null || ( echo "User does not exist" && exit 1 )
+declare -r PICIMPORT="$(mktemp /tmp/${USERNAME}_dsimport.XXXXXX)" || exit 1
+printf "%s %s \n%s:%s" "${MAPPINGS}" "${ATTRS}" "${USERNAME}" "${USERPIC}" >"${PICIMPORT}"
+${DSIMPORT_CMD} "${PICIMPORT}" /Local/Default M &&
+        echo "Successfully imported ${USERPIC} for ${USERNAME}."
+rm "${PICIMPORT}"
 
 exit 0
