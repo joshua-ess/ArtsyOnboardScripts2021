@@ -28,7 +28,7 @@ Onboarding Scripts for Artsy Staff
 **dock_reset.sh**   
   clean up the dock   
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dock_reset.sh | bash  
-  curl -L https://git.io/JGP8E | bash     
+  curl -L https://git.io/JGPre | bash     
     
 **promote_admin.sh**   
   moves user to admin rights  
