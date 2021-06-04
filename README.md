@@ -63,8 +63,3 @@ Onboarding Scripts for Artsy Staff
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/remove_munki.sh | sudo bash  
   curl -L https://git.io/JG2bC | sudo bash
     
-**setup.sh**  
-  currently not working.  
-  should be used as a conductor for all the other scripts and use them in the right order in order  
-  to set up a new computer. 
-    
