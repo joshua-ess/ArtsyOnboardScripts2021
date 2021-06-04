@@ -9,8 +9,10 @@ cd $directory || exit
 
 if [[ -f $desktoppr ]] 
     then
-    curl -O $file 
+        echo "desktoppr is installed --- lets go"
+        curl -O $file 
         desktoppr "$directory/wallpaper.png"
     else
         echo "$error_message"
 fi
+
