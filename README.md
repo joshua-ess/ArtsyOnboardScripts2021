@@ -22,7 +22,7 @@ Onboarding Scripts for Artsy Staff
     
 **dock_cleaner.sh**   
   clean up the dock   
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dockutil.sh | bash  
+  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dock_cleaner.sh | bash  
   curl -L https://git.io/JG2be | bash
     
 **promote_admin.sh**   
