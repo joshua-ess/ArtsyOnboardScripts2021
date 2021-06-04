@@ -2,7 +2,7 @@
 
 file=https://raw.githubusercontent.com/jasonarias/2021onboarding/main/wallpaper.png
 directory=/tmp
-desktoppr=usr/local/bin/desktoppr
+desktoppr=/usr/local/bin/desktoppr
 error_message="desktoppr not installed, please setup apps first"
 
 cd $directory || exit
