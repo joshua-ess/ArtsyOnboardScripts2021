@@ -24,6 +24,7 @@ Onboarding Scripts for Artsy Staff
   clean up the dock   
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dock_cleaner.sh | bash  
   curl -L https://git.io/JGP8E | bash     
+    
 **promote_admin.sh**   
   moves user to admin rights  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/promote_admin.sh | sudo bash  
