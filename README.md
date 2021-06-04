@@ -64,7 +64,12 @@ Onboarding Scripts for Artsy Staff
   will change users icons to a default logo  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/set_user_icons.sh | sudo bash  
   curl -L https://git.io/JG2bZ | sudo bash
-
+    
+**set_wallpaper.sh**  
+  will set the wallpaper to artsy default 
+  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/set_wallpaper.sh | bash  
+  curl -L https://git.io/JG2bZ | bash
+    
 **setup.sh**  
   currently not working.  
   should be used as a conductor for all the other scripts and use them in the right order in order  
