@@ -30,8 +30,7 @@ Onboarding Scripts for Artsy Staff
     
 **set_user_icons.sh** ✓  
   will change users icons to a default logo  
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/set_user_icons.sh | sudo bash  
-  curl -L https://git.io/JG2bZ | sudo bash
+  curl -LO https://git.io/JG2bZ && chmod +x JG2bZ && sudo ./JG2bZ 
      
 **set_wallpaper.sh** ✓  
   will set the wallpaper to artsy default 

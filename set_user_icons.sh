@@ -1,7 +1,7 @@
 #!/bin/bash
 # vars
 user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
-directory=/tmp/
+directory=/tmp
 image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
 
 # funcs
