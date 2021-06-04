@@ -10,22 +10,18 @@ Onboarding Scripts for Artsy Staff
     
 **brew_installer.sh** ✓   
   set up brew and get the base apps in  
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/brew_installer.sh | bash  
   curl -L https://git.io/JG2F7 | bash
     
 **change_compname.sh** ✓   
   set name to user-serial number  
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/change_compname.sh | sudo bash  
   curl -L https://git.io/JG2Fx | sudo bash
     
 **dock_cleaner.sh** ✓   
   clean up the dock   
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dock_cleaner.sh | bash  
   curl -L https://git.io/JGP8E | bash     
     
 **dock_reset.sh** ✓  
   reset the dock to factory defaults   
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/dock_reset.sh | bash  
   curl -L https://git.io/JGPre | bash     
     
 **set_user_icons.sh** ✓  
@@ -34,7 +30,6 @@ Onboarding Scripts for Artsy Staff
      
 **set_wallpaper.sh** ✓  
   will set the wallpaper to artsy default 
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/set_wallpaper.sh | bash  
   curl -L https://git.io/JGPNv | bash
    
 **promote_admin.sh**   
