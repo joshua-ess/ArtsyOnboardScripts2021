@@ -2,6 +2,11 @@
 
 directory=/tmp
 the_file=https://raw.githubusercontent.com/kcrawford/dockutil/master/scripts/dockutil
+chrome=/Applications/Google\ Chrome.app
+drive=/Applications/Google\ Drive.app 
+slack=/Applications/Slack.app
+onepass=/Applications/1Password\ 7.app/
+zoom=/Applications/zoom.us.app
 
 # funcs
 printer () {
@@ -39,9 +44,29 @@ chmod +x dockutil
 ./dockutil --remove 'Keynote' ;
 ./dockutil --remove 'Safari' ;
 # get rid of podcasts, appletv, facetime, messages, itunes
-./dockutil --add /Applications/Google\ Chrome.app --position 3 ;
-./dockutil --add /Applications/Google\ Drive.app --position 4 ;
-./dockutil --add /Applications/Slack.app --position 5 ;
-./dockutil --add /Applications/1Password\ 7.app/ --position 6 ;
-./dockutil --add /Applications/zoom.us.app --position 7 ;
+if [[ -d $chrome ]]
+then
+    ./dockutil --add "$chrome" --position 3 
+fi
+
+if [[ -d $drive ]]
+then
+    ./dockutil --add "$drive" --position 4 
+fi
+
+if [[ -d $slack ]]
+then
+    ./dockutil --add "$slack" --position 5
+fi
+
+
+if [[ -d $onepass ]]
+then
+    ./dockutil --add "$onepass" --position 6
+fi
+
+if [[ -d $zoom ]]
+then
+    ./dockutil --add "$zoom" --position 7 
+fi
 
