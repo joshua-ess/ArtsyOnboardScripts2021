@@ -55,6 +55,10 @@ if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [
         ./dockutil --add "$onepass" --position 6
         ./dockutil --add "$zoom" --position 7 
     else
+        echo
+        echo "---"
         echo "$error_message"
+        echo "---"
+        echo
 fi
 
