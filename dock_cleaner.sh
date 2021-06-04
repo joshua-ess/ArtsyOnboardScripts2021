@@ -7,7 +7,7 @@ drive=/Applications/Google\ Drive.app
 slack=/Applications/Slack.app
 onepass=/Applications/1Password\ 7.app/
 zoom=/Applications/zoom.us.app
-error_message="base artsy app missing, please install apps first"
+error_message="base artsy apps missing, please install apps first"
 
 # funcs
 printer () {
