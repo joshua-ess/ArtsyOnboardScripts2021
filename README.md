@@ -60,11 +60,6 @@ Onboarding Scripts for Artsy Staff
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/remove_munki.sh | sudo bash  
   curl -L https://git.io/JG2bC | sudo bash
     
-**set_user_icons.sh**  
-  will change users icons to a default logo  
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/set_user_icons.sh | sudo bash  
-  curl -L https://git.io/JG2bZ | sudo bash
-    
 **set_wallpaper.sh**  
   will set the wallpaper to artsy default 
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/set_wallpaper.sh | bash  
