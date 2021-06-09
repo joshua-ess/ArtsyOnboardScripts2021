@@ -33,7 +33,8 @@ Onboarding Scripts for Artsy Staff
   curl -L https://git.io/JGPNv | bash
    
 **setup.sh**  
-  currently not working.  
+  curl -LO https://git.io/JZGgb && chmod +x JG2bZ && ./JZGgb 
+  do not sudo the whole thing. currently not working.  
   should be used as a conductor for all the other scripts and use them in the right order in order  
   to set up a new computer. 
     

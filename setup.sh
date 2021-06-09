@@ -1,9 +1,30 @@
 #!/bin/bash
-# vars
-directory=/opt/artsy
-url=https://github.com/jasonarias/2021onboarding/blob/main/
+# desc: setup accounts, apps, icons, wallpaper, dock, compname, brew
+# meraki, filevault. last 2 still very wip, rest normal wip. 
 
-# funcs
+# vars
+directory=/tmp
+
+# ok this script prob a curl, chmod, and ./ case. 
+
+# sudo + input
+# set default system accounts
+curl -LO https://git.io/JG2FK && chmod +x JG2FK && sudo ./JG2FK
+# set user icons
+curl -LO https://git.io/JG2bZ && chmod +x JG2bZ && sudo ./JG2bZ 
+# sudo
+# set compname
+curl -L https://git.io/JG2Fx | sudo bash
+
+# no sudo 
+# brew
+curl -L https://git.io/JG2F7 | bash
+# set dock
+curl -L https://git.io/JGP8E | bash     
+# set wallpaper
+curl -L https://git.io/JGPNv | bash
+
+# func
 printer () {
 string=''$message''
 for ((i=0; i<=${#string}; i++)); do
@@ -13,157 +34,7 @@ for ((i=0; i<=${#string}; i++)); do
 printf -- '\n';
 }
 
-    clear
-    printf -- 'welcome to the default users setup \n';
-    message='checking for directory in /opt'
-    printer
-    echo
-
-# /opt check & make directory / set permissions
-if [[ -d /opt  ]]
-then
-       echo "/opt exists on your filesystem, proceeding"
-else
-       sudo mkdir -p /opt/
-fi
-
-sudo mkdir "$directory" 
-sudo chown -R "$user" "$directory" 
-cd "$directory" || return
- 
-    clear
-    printf -- 'directory is ready \n';
-    message='lets get the zip file'
-    printer
-    echo
-
-# get the pass for the zip pkg
-clear
-sleep 2s
-echo
-echo -n "Enter Setup Password from the IT Vault in 1Pass : "
-read -s password
-echo
-# alternate pass input method
-# read -r -s -p  "Enter Setup Password from the IT Vault in 1Pass : " zip_pass 
-# printf -- '\n';
-
-printf -- 'downloading setup file \n';
-echo
-curl -o setup.zip -L "https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
-unzip -P $zip_pass setup.zip
-
-# install any pkg packed in 
-for f in *.pkg ;
-    do sudo installer -verbose -pkg "$f" -target /
-done ;
-# ok installed accounts
-
-
-
-
-
-printf -- 'downloading images \n';
-# https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true
-printf -- 'changing the user icon \n';
-# change user icon --- ! not working atm....
-    clear
-    printf -- 'setting the user icon now \n';
-    message='fingers crossed'
-    printer
-    echo
-
-sudo dscl . delete /Users/"$user" jpegphoto
-sudo dscl . delete /Users/"$user" Picture
-sudo dscl . create /Users/"$user" Picture "$directory/user.tif"
-# from https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal/367667#367667
-set -e
-declare -x USERNAME="$user"
-declare -x USERPIC="$directory/user.tif"
-declare -r DSIMPORT_CMD="/usr/bin/dsimport"
-declare -r ID_CMD="/usr/bin/id"
-declare -r MAPPINGS='0x0A 0x5C 0x3A 0x2C'
-declare -r ATTRS='dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName externalbinary:dsAttrTypeStandard:JPEGPhoto'
-if [ ! -f "${USERPIC}" ]; then
-      echo "User image required"
-fi
-# Check that the username exists - exit on error
-${ID_CMD} "${USERNAME}" &>/dev/null || ( echo "User does not exist" && exit 1 )
-
-declare -r PICIMPORT="$(mktemp /tmp/${USERNAME}_dsimport.XXXXXX)" || exit 1
-printf "%s %s \n%s:%s" "${MAPPINGS}" "${ATTRS}" "${USERNAME}" "${USERPIC}" >"${PICIMPORT}"
-${DSIMPORT_CMD} "${PICIMPORT}" /Local/Default M &&
-        echo "Successfully imported ${USERPIC} for ${USERNAME}."
-rm "${PICIMPORT}"
-
-    clear
-    printf -- 'ok, lets get brew installed \n';
-    message='eyes open, it will ask questions'
-    printer
-    echo
-
-# the brewables
-sudo -u $user /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install google-chrome
-brew install google-drive
-brew install slack
-brew install zoom
-brew install 1password 
-brew install notion
-brew install desktoppr
-brew install dockutil
-
-    clear
-    printf -- 'ok, brew installed? \n';
-    printf -- 'setting dark mode and going in to clean up the dock'
-    message='its gunna blink a lot'
-    printer
-    echo
-
-# dark mode
-dark mode -- needs reboot
-sudo defaults write /Library/Preferences/.GlobalPreferences.plist _HIEnableThemeSwitchHotKey -bool true
-
-# dockutil cleanups
-dockutil --remove 'Mail' ;
-dockutil --remove 'Contacts' ;
-dockutil --remove 'Calendar' ;
-dockutil --remove 'Reminders' ;
-dockutil --remove 'Maps' ;
-dockutil --remove 'Messages' ;
-dockutil --remove 'FaceTime' ;
-dockutil --remove 'Pages' ;
-dockutil --remove 'Numbers' ;
-dockutil --remove 'Keynote' ;
-dockutil --remove 'Safari' ;
-dockutil --add /Applications/Google\ Chrome.app --position 3 ;
-dockutil --add /Applications/Slack.app --position 4 ;
-dockutil --add /Applications/zoom.us.app --position 5 ;
-dockutil --add /Applications/1Password\ 7.app/ --position 6 ;
-
-    clear
-    printf -- 'ok we should be able to change the wallpaper'
-    message='roll the dice'
-    printer
-    echo
-
-# set wallpaper
-desktoppr "$directory/wallpaper.png"
-
-    clear
-    printf -- 'computer renaming...'
-    message='GO!   '
-    printer
-    echo
-
-# rename computer
-serial=$(ioreg -c IOPlatformExpertDevice -d 2 | awk -F\" '/IOPlatformSerialNumber/{print $(NF-1)}')
-username=$(echo "${user}" | sed -e 's/\./-/g')
-compname=${username}-${serial}
-sudo scutil --set ComputerName "$compname"
-sudo scutil --set HostName "$compname"
-sudo scutil --set LocalHostName "$compname"
-
+# example of func usage
 #    clear
 #    printf -- 'time for the vault...'
 #    message='GO!   '
