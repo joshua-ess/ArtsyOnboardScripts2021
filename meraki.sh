@@ -1,8 +1,6 @@
 #!/bin/bash
 # vars
 merakiurl='https://m.meraki.com/enroll?id=169-312-5055'
-meraki_id=169-312-5055
-directory=/tmp
 
 # func
 printer () {
@@ -13,9 +11,6 @@ for ((i=0; i<=${#string}; i++)); do
         done 
 printf -- '\n';
 }
-
-echo $meraki_id | pbcopy
-
     clear
     printf -- '!! meraki time !!'
     printf -- 'meraki code should be on the clipboard'
@@ -25,7 +20,6 @@ echo $meraki_id | pbcopy
 
 open -a "Google Chrome" "$merakiurl" 
 
-# open -a "Safari" "$merakiurl" 
 # osascript -e 'display notification "Script paused until profile is downloaded" with title "Meraki Profile Alert"'
 # osascript -e 'display notification "Please install the profile from Meraki "'
 # printf -- '--- Please install the profile from Meraki ---\n';
@@ -34,7 +28,7 @@ open -a "Google Chrome" "$merakiurl"
      while [ ! -f "$HOME"/Downloads/meraki_sm_mdm.mobileconfig  ]
              do
                sleep 1s 
-               echo "please download & install meraki profile from Chrome..."
+               #echo "please download & install meraki profile from Chrome..."
              done
 
 # sleep 5s
@@ -46,7 +40,6 @@ printf -- 'lets see what profiles we have'
 sudo /usr/bin/profiles -P
 printf -- 'installing meraki profile hopefully...'
 sudo /usr/bin/profiles -I -F "$HOME"/Downloads/meraki_sm_mdm.mobileconfig 
-sudo cp "$HOME"/Downloads/meraki_sm_mdm.mobileconfig $directory
 printf -- 'lets check them profiles again'
 sudo /usr/bin/profiles -P
 

@@ -24,6 +24,10 @@ Onboarding Scripts for Artsy Staff
   reset the dock to factory defaults   
   curl -L https://git.io/JGPre | bash     
     
+**meraki.sh**
+  opens chrome to the meraki page / installs profile  
+  curl -LO https://git.io/JZGof && chmod +x JG2FK && sudo ./JZGof   
+     
 **set_user_icons.sh** ✓  
   will change users icons to a default logo  
   curl -LO https://git.io/JG2bZ && chmod +x JG2bZ && sudo ./JG2bZ 
