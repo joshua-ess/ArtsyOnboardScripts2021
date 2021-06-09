@@ -25,8 +25,8 @@ Onboarding Scripts for Artsy Staff
   curl -L https://git.io/JGPre | bash     
     
 **meraki.sh**
-  opens chrome to the meraki page / installs profile  
-  curl -LO https://git.io/JZGof && chmod +x JG2FK && sudo ./JZGof   
+  opens chrome to the meraki page / opens profile  
+  curl -L https://git.io/JZGof |bash    
      
 **set_user_icons.sh** ✓  
   will change users icons to a default logo  

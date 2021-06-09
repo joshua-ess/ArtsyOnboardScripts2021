@@ -20,32 +20,10 @@ printf -- '\n';
 
 open -a "Google Chrome" "$merakiurl" 
 
-# osascript -e 'display notification "Script paused until profile is downloaded" with title "Meraki Profile Alert"'
-# osascript -e 'display notification "Please install the profile from Meraki "'
-# printf -- '--- Please install the profile from Meraki ---\n';
-# osascript -e 'display notification "Set Chrome as default browser and close the extra window please" with title "Set Chrome as Default"'
-
      while [ ! -f "$HOME"/Downloads/meraki_sm_mdm.mobileconfig  ]
              do
                sleep 1s 
                #echo "please download & install meraki profile from Chrome..."
              done
 
-# sleep 5s
-# # does not work -- mac seems to require a button push...
-# # sudo killall -9 "Google Chrome"
-# # sleep 3s
-
-echo
-printf -- 'lets see what profiles we have'
-echo
-sudo /usr/bin/profiles -P
-echo
-printf -- 'installing meraki profile hopefully...'
-echo
-sudo /usr/bin/profiles -I -F "$HOME"/Downloads/meraki_sm_mdm.mobileconfig 
-echo
-printf -- 'lets check them profiles again'
-echo
-sudo /usr/bin/profiles -P
-
+open -b com.apple.systempreferences /System/Library/PreferencePanes/Profiles.prefPane
