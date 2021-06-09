@@ -36,10 +36,16 @@ open -a "Google Chrome" "$merakiurl"
 # # sudo killall -9 "Google Chrome"
 # # sleep 3s
 
+echo
 printf -- 'lets see what profiles we have'
+echo
 sudo /usr/bin/profiles -P
+echo
 printf -- 'installing meraki profile hopefully...'
+echo
 sudo /usr/bin/profiles -I -F "$HOME"/Downloads/meraki_sm_mdm.mobileconfig 
+echo
 printf -- 'lets check them profiles again'
+echo
 sudo /usr/bin/profiles -P
 
