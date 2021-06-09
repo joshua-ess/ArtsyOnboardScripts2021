@@ -3,7 +3,7 @@
 Onboarding Scripts for Artsy Staff
 ---------------  
     
-### Scripts
+### Setup Scripts
 **account_creator.sh**  ✓  
   creates the admin and loaner accounts, requires input. do not pipe to bash.  
   curl -LO https://git.io/JG2FK && chmod +x JG2FK && sudo ./JG2FK
@@ -32,21 +32,12 @@ Onboarding Scripts for Artsy Staff
   will set the wallpaper to artsy default 
   curl -L https://git.io/JGPNv | bash
    
-**promote_admin.sh**   
-  moves user to admin rights  
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/promote_admin.sh | sudo bash  
-  curl -L https://git.io/JG2bU | sudo bash
-    
-**remove_munki.sh**   
-  removes munki install  
-  curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/remove_munki.sh | sudo bash  
-  curl -L https://git.io/JG2bC | sudo bash
-    
 **setup.sh**  
   currently not working.  
   should be used as a conductor for all the other scripts and use them in the right order in order  
   to set up a new computer. 
     
+### Misc. Scripts
 **promote_admin.sh**   
   moves user to admin rights  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/promote_admin.sh | sudo bash  
