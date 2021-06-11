@@ -37,7 +37,7 @@ Onboarding Scripts for Artsy Staff
   curl -L https://git.io/JGPNv | bash
    
 **setup.sh**  
-  curl -LO https://git.io/JZGgb && chmod +x JG2bZ && ./JZGgb 
+  curl -LO https://git.io/JZGgb && chmod +x JZGgb && ./JZGgb 
   do not run as root/admin
     
 ### Misc. Scripts
