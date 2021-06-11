@@ -118,3 +118,4 @@ printf "%s %s \n%s:%s" "${MAPPINGS}" "${ATTRS}" "${USERNAME}" "${USERPIC}" >"${P
 ${DSIMPORT_CMD} "${PICIMPORT}" /Local/Default M &&
         echo "Successfully imported ${USERPIC} for ${USERNAME}."
 rm "${PICIMPORT}"
+
