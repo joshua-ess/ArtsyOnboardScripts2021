@@ -24,6 +24,7 @@ printf -- '\n';
     printer
     echo
 
+account_creator () {
 clear
 echo -n "Enter Setup Password from IT Vault: "
 read -s -r setup_password # added a -r from shellcheck, remove if issues
@@ -106,3 +107,5 @@ ${DSIMPORT_CMD} "${PICIMPORT}" /Local/Default M &&
 rm "${PICIMPORT}"
 
 exit 0
+}
+account_creator
