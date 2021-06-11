@@ -4,9 +4,10 @@ bold=$(tput bold)  # ${bold}
 red=$(tput setaf 1) # ${red}
 std=$(tput sgr0) # ${std}
 adminpkg=admin.pkg
+directory=$HOME/.artsy
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
-directory=$HOME/.artsy
+
 # sudo check
 # if [[ $EUID -ne 0 ]]; then
 #         echo "This script must be run with sudo privelages from the user account" 
@@ -14,6 +15,7 @@ directory=$HOME/.artsy
 # fi
 # 
 # funcs
+
 printer () {
 string=''$message''
 for ((i=0; i<=${#string}; i++)); do
@@ -29,28 +31,29 @@ printf -- '\n';
 
 
 if [ -z "$password" ] 
-then
-    echo 
-    echo -n "Enter Admin Password for $bold SUDO $std: "
-    read -r -s password
-else
-    echo "seems we have a password already"
+    then
+        echo 
+        echo -n "Enter Admin Password for $bold SUDO $std: "
+        read -r -s password
+    else
+        echo "seems we have a password already"
 
 if [ -z "$setup_password" ] 
-then
-    echo -n "Enter Setup Password from IT Vault: "
-    read -s -r setup_password # added a -r from shellcheck, remove if issues
-    echo
-else
-    echo "setup_password seems set"
+    then
+        echo -n "Enter Setup Password from IT Vault: "
+        read -s -r setup_password # added a -r from shellcheck, remove if issues
+        echo
+    else
+        echo "setup_password seems set"
 
 cd "$directory" || return
+
     echo "we should be in the $(pwd)"
     message='...lets get the zip file'
     printer
     echo
-curl -o setup.zip -L "$url"
 
+curl -o setup.zip -L "$url"
 unzip -o -P "$setup_password" setup.zip
 
 while [[ ! -f "$adminpkg" ]] 
@@ -69,16 +72,15 @@ for f in *.pkg ;
 done
 
 # begin icon setter block
-user=artsytech
-image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
-curl -o user.tif -L "$image"
+system_user=artsytech
+icon_image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
+curl -o user.tif -L "$icon_image"
 printf -- 'changing the user icon \n';
-echo "$password"| sudo -S dscl . delete /Users/"$user" jpegphoto
-echo "$password"| sudo -S dscl . delete /Users/"$user" Picture
-echo "$password"| sudo -S dscl . create /Users/"$user" Picture "$directory/user.tif"
-# from https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal/367667#367667
+echo "$password"| sudo -S dscl . delete /Users/"$system_user" jpegphoto
+echo "$password"| sudo -S dscl . delete /Users/"$system_user" Picture
+echo "$password"| sudo -S dscl . create /Users/"$system_user" Picture "$directory/user.tif"
 set -e
-declare -x USERNAME="$user"
+declare -x USERNAME="$system_user"
 declare -x USERPIC="$directory/user.tif"
 declare -r DSIMPORT_CMD="/usr/bin/dsimport"
 declare -r ID_CMD="/usr/bin/id"
@@ -95,14 +97,13 @@ ${DSIMPORT_CMD} "${PICIMPORT}" /Local/Default M &&
         echo "Successfully imported ${USERPIC} for ${USERNAME}."
 rm "${PICIMPORT}"
 
-user=artsyloaner
+system_user=artsyloaner
 printf -- 'changing the user icon \n';
-echo "$password"| sudo -S dscl . delete /Users/"$user" jpegphoto
-echo "$password"| sudo -S dscl . delete /Users/"$user" Picture
-echo "$password"| sudo -S dscl . create /Users/"$user" Picture "$directory/user.tif"
-# from https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal/367667#367667
+echo "$password"| sudo -S dscl . delete /Users/"$system_user" jpegphoto
+echo "$password"| sudo -S dscl . delete /Users/"$system_user" Picture
+echo "$password"| sudo -S dscl . create /Users/"$system_user" Picture "$directory/user.tif"
 set -e
-declare -x USERNAME="$user"
+declare -x USERNAME="$system_user"
 declare -x USERPIC="$directory/user.tif"
 declare -r DSIMPORT_CMD="/usr/bin/dsimport"
 declare -r ID_CMD="/usr/bin/id"
