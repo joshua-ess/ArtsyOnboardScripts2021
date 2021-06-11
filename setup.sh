@@ -41,7 +41,7 @@ while [[ ! -d "$directory" ]]
         echo -n "Enter Admin Password: "
         read -r -s password
         echo "$password" | sudo -S mkdir -p /opt/artsy
-        chown "$user" "$directory"
+        chown -R "$user" "$directory"
    done
         echo 
         echo "$directory exists or was created!"
