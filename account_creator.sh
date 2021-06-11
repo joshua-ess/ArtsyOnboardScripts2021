@@ -7,11 +7,11 @@ adminpkg=admin.pkg
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 directory=$HOME/.artsy
-# sudo check
-if [[ $EUID -ne 0 ]]; then
-       echo "This script must be run with sudo privelages from the user account" 
-          exit 1
-fi
+# # sudo check
+# if [[ $EUID -ne 0 ]]; then
+#        echo "This script must be run with sudo privelages from the user account" 
+#           exit 1
+# fi
 
 # funcs
 printer () {
