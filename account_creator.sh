@@ -114,10 +114,6 @@ echo "$password"| sudo -S dscl . delete /Users/"$system_user" Picture
 echo "$password"| sudo -S dscl . create /Users/"$system_user" Picture "$directory/user.tif"
 set -e
 declare -x USERNAME="$system_user"
-declare -x USERPIC="$directory/user.tif"
-declare -r DSIMPORT_CMD="/usr/bin/dsimport"
-declare -r ID_CMD="/usr/bin/id"
-declare -r MAPPINGS='0x0A 0x5C 0x3A 0x2C'
 declare -r ATTRS='dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName externalbinary:dsAttrTypeStandard:JPEGPhoto'
 if [ ! -f "${USERPIC}" ]; then
       echo "User image required"
