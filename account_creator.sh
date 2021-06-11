@@ -1,5 +1,8 @@
 #!/bin/bash
 # vars
+bold=$(tput bold)  # ${bold}
+red=$(tput setaf 1) # ${red}
+std=$(tput sgr0) # ${std}
 adminpkg=admin.pkg
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
@@ -24,20 +27,22 @@ printf -- '\n';
     printer
     echo
 
-account_creator () {
+echo 
+echo -n "Enter Admin Password for $bold SUDO $std: "
+read -r -s password
+
+
 clear
 echo -n "Enter Setup Password from IT Vault: "
 read -s -r setup_password # added a -r from shellcheck, remove if issues
 echo
 
+account_creator () {
 cd "$directory" || return
- 
-    clear
     echo "we should be in the $(pwd)"
     message='...lets get the zip file'
     printer
     echo
-
 curl -o setup.zip -L "$url"
 
 unzip -o -P "$setup_password" setup.zip
@@ -50,10 +55,12 @@ while [[ ! -f "$adminpkg" ]]
    done
 
 for f in *.pkg ;
-    do sudo installer -verbose -pkg "$f" -target /
+    do echo "$password"| sudo -S installer -verbose -pkg "$f" -target /
 done 
 
-rm *.pkg
+for f in *.pkg ;
+    do rm "$f"
+done
 
 # begin icon setter block
 user=artsytech
@@ -108,4 +115,5 @@ rm "${PICIMPORT}"
 
 exit 0
 }
+
 account_creator
