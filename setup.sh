@@ -46,7 +46,7 @@ while [[ ! -d "$directory" ]]
         echo "$directory exists or was created!"
         echo 
 
-cd "$directory"
+cd "$directory" || exit
 echo "should be in the proper dir: $(pwd)"
 message="next to get the tricky sudo bits installed "
 printer
