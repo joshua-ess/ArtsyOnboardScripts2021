@@ -100,7 +100,8 @@ curl -L https://git.io/JGPNv | bash
 echo "${bold}dock cleanup${std}"
 printer
 echo; echo
-curl -L https://git.io/JGP8E | bash     
+curl -LO https://git.io/JGP8E      
+chmod +x JGP8E && ./JGP8E
 
 # set the vault up -- double check me
 # read -r -s -p "Enter Password for the '$user' Account: " userpass
