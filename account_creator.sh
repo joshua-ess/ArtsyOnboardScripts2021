@@ -27,17 +27,23 @@ printf -- '\n';
     printer
     echo
 
- echo 
- echo -n "Enter Admin Password for $bold SUDO $std: "
- read -r -s password
 
+if [ -z "$password" ] 
+then
+    echo 
+    echo -n "Enter Admin Password for $bold SUDO $std: "
+    read -r -s password
+else
+    echo "seems we have a password already"
 
-clear
-echo -n "Enter Setup Password from IT Vault: "
-read -s -r setup_password # added a -r from shellcheck, remove if issues
-echo
+if [ -z "$setup_password" ] 
+then
+    echo -n "Enter Setup Password from IT Vault: "
+    read -s -r setup_password # added a -r from shellcheck, remove if issues
+    echo
+else
+    echo "setup_password seems set"
 
-account_creator () {
 cd "$directory" || return
     echo "we should be in the $(pwd)"
     message='...lets get the zip file'
@@ -112,8 +118,3 @@ printf "%s %s \n%s:%s" "${MAPPINGS}" "${ATTRS}" "${USERNAME}" "${USERPIC}" >"${P
 ${DSIMPORT_CMD} "${PICIMPORT}" /Local/Default M &&
         echo "Successfully imported ${USERPIC} for ${USERNAME}."
 rm "${PICIMPORT}"
-
-exit 0
-}
-
-account_creator
