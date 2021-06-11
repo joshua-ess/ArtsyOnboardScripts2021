@@ -87,7 +87,6 @@ echo; echo
 curl -L https://git.io/JG2F7 | bash
 # set dock
 echo "${bold}dock cleanup${std}"
-message="${bold}ITS GUNNA BLINK A LOT ${red} ITS OK${std}"
 printer
 echo; echo
 curl -L https://git.io/JGP8E | bash     
@@ -97,7 +96,6 @@ echo "simple wallpaper fix"
 echo; echo
 curl -L https://git.io/JGPNv | bash
 
-osascript -e 'display notification "YOU GOTTA ENABLE FILEVAULT + MERAKI - script will now force a reboot"'
 # set the vault up -- double check me
 # read -r -s -p "Enter Password for the '$user' Account: " userpass
 # printf -- '\n';
@@ -117,7 +115,7 @@ file=$directory/"$user"-macinfo.txt
 touch "$file"
 date > "$file"
 
-echo "$(hostname)" >> "$file"
+hostname >> "$file"
 echo "$user" >> "$file"
 fdesetup status >> "$file"
 system_profiler SPHardwareDataType >> "$file"
@@ -131,10 +129,8 @@ wservice=$(/usr/sbin/networksetup -listallnetworkservices | grep -Ei '(Wi-Fi|Air
 device=$(/usr/sbin/networksetup -listallhardwareports | awk "/$wservice/,/Ethernet Address/" | awk 'NR==2' | cut -d " " -f 2)
 networksetup -removepreferredwirelessnetwork "$device" "PYUR 97094"
 
-# destroy thine self
 sudo softwareupdate -i -a -R 
 sudo reboot
-rm -- "$0"
 
 # old munki block
 # printf -- '--- Getting Munki ---\n';
@@ -145,6 +141,4 @@ rm -- "$0"
 # sudo /usr/local/munki/managedsoftwareupdate -a
 # sudo /bin/bash -c "$(curl -s http://10.135.10.131/munkireport/index.php?/install)"
 # sudo rm munki.pkg 
-
-# meraki block
 
