@@ -56,9 +56,9 @@ echo; echo
 
 # sudo + input
 # set default system accounts - prob
-# curl -LO https://git.io/JG2FK 
-# source JG2FK 
-source <(curl -sL https://git.io/JG2FK)
+curl -LO https://git.io/JG2FK 
+source JG2FK 
+# source <(curl -sL https://git.io/JG2FK)
 account_creator
 
 echo; echo
