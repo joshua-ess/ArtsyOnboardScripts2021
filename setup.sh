@@ -19,7 +19,7 @@ for ((i=0; i<=${#string}; i++)); do
 printf -- '\n';
 }
 
-clear
+# clear
 
 message="ok, lets get started... "
 printer

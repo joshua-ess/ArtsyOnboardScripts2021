@@ -11,7 +11,6 @@ for ((i=0; i<=${#string}; i++)); do
         done 
 printf -- '\n';
 }
-    clear
     printf -- '!! meraki time !!'
     printf -- 'meraki code should be on the clipboard'
     message='be ready for chrome 1st run'
