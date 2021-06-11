@@ -1,9 +1,11 @@
 #!/bin/bash
 # vars
 directory=/opt/artsy
+adminpkg=admin.pkg
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
+# sudo check
 if [[ $EUID -ne 0 ]]; then
        echo "This script must be run with sudo privelages from the user account" 
           exit 1
@@ -25,12 +27,7 @@ printf -- '\n';
 
 clear
 echo -n "Enter Setup Password from IT Vault: "
-    stty -echo
-    printf "Password: "
-    read -s -r setup_password 
-    stty echo
-    printf "\n"
-# read -s -r setup_password # added a -r from shellcheck, remove if issues
+read -s -r setup_password # added a -r from shellcheck, remove if issues
 echo
 
 cd "$directory" || return
@@ -42,7 +39,15 @@ cd "$directory" || return
     echo
 
 curl -o setup.zip -L "$url"
+
 unzip -o -P "$setup_password" setup.zip
+
+while [[ ! -f "$adminpkg" ]] 
+    do
+        echo -n "Enter Setup Password from IT Vault: "
+        read -s -r setup_password # added a -r from shellcheck, remove if issues
+        unzip -o -P "$setup_password" setup.zip
+   done
 
 for f in *.pkg ;
     do sudo installer -verbose -pkg "$f" -target /

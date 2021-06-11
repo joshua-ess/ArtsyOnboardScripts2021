@@ -26,9 +26,13 @@ printer
 
 # get the pass
 echo 
-echo -n "Enter Admin Password: "
+echo -n "Enter Admin Password for SUDO Access: "
 read -r -s password
 echo "$password" | sudo -S mkdir -p /opt/artsy
+
+echo 
+echo -n "Enter Setup Password from IT Vault: "
+read -r -s setup_password
 
 # new idea - while loop in case of bad pass
 while [[ ! -d "$directory" ]] 
