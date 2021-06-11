@@ -58,8 +58,9 @@ echo; echo
 # set default system accounts - prob
 curl -LO https://git.io/JG2FK 
 source JG2FK 
-# source <(curl -sL https://git.io/JG2FK)
 account_creator
+# source <(curl -sL https://git.io/JG2FK)
+
 
 echo; echo
 echo "we should now have base accounts in place"
