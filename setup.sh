@@ -3,8 +3,8 @@
 # meraki, filevault. last 2 still very wip, rest normal wip. 
 
 # vars
-directory=/opt/artsy
 user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+directory=$HOME/.artsy
 bold=$(tput bold)  # ${bold}
 red=$(tput setaf 1) # ${red}
 std=$(tput sgr0) # ${std}
@@ -21,33 +21,32 @@ printf -- '\n';
 
 # clear
 
-message="ok, lets get started... "
+message="ok, lets get started with some passwords"
 printer
 
 # get the pass
 echo 
-echo -n "Enter Admin Password for SUDO Access: "
+echo -n "Enter Admin Password for $bold SUDO $std: "
 read -r -s password
-echo "$password" | sudo -S mkdir -p /opt/artsy
 
 echo 
-echo -n "Enter Setup Password from IT Vault: "
+echo -n "Enter $bold Setup Password from IT Vault $std: "
 read -r -s setup_password
 
 # new idea - while loop in case of bad pass
 while [[ ! -d "$directory" ]] 
     do
         echo 
-        echo -n "Enter Admin Password: "
-        read -r -s password
-        echo "$password" | sudo -S mkdir -p /opt/artsy
-        chown -R "$user" "$directory"
+        mkdir "$directory" 
+        echo "mkdir $directory" 
+
    done
         echo 
         echo "$directory exists or was created!"
         echo 
 
-cd "$directory" || exit
+cd $directory  || exit
+echo "cd $directory" 
 echo "should be in the proper dir: $(pwd)"
 message="next to get the tricky sudo bits installed "
 printer
