@@ -1,12 +1,12 @@
 #!/bin/bash
 # vars
 bold=$(tput bold)  # ${bold}
-red=$(tput setaf 1) # ${red}
+# red=$(tput setaf 1) # ${red}
 std=$(tput sgr0) # ${std}
 adminpkg=admin.pkg
 directory=$HOME/.artsy
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
-user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+# user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
 # sudo check
 # if [[ $EUID -ne 0 ]]; then
@@ -37,6 +37,7 @@ if [ -z "$password" ]
         read -r -s password
     else
         echo "seems we have a password already"
+fi
 
 if [ -z "$setup_password" ] 
     then
@@ -45,6 +46,7 @@ if [ -z "$setup_password" ]
         echo
     else
         echo "setup_password seems set"
+fi
 
 cd "$directory" || return
 
