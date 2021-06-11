@@ -5,6 +5,7 @@ bold=$(tput bold)  # ${bold}
 std=$(tput sgr0) # ${std}
 adminpkg=admin.pkg
 directory=$HOME/.artsy
+icon_image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 # user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
@@ -48,7 +49,12 @@ if [ -z "$setup_password" ]
         echo "setup_password seems set"
 fi
 
-cd "$directory" || return
+if [ -d "$directory" ]
+    then
+        cd "$directory" || return
+    else    
+        mkdir "$directory" && cd "$directory"
+fi
 
     echo "we should be in the $(pwd)"
     message='...lets get the zip file'
@@ -74,8 +80,10 @@ for f in *.pkg ;
 done
 
 # begin icon setter block
+
+
+
 system_user=artsytech
-icon_image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
 curl -o user.tif -L "$icon_image"
 printf -- 'changing the user icon \n';
 echo "$password"| sudo -S dscl . delete /Users/"$system_user" jpegphoto
