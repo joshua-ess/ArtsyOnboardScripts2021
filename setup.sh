@@ -42,6 +42,8 @@ while [[ ! -d "$directory" ]]
         echo "$directory exists or was created!"
         echo 
 
+cd "$directory"
+echo "should be in the proper dir: $(pwd)"
 message="next to get the tricky sudo bits installed "
 printer
 echo
@@ -50,7 +52,7 @@ echo; echo
 
 # sudo + input
 # set default system accounts - prob
-curl -LO https://git.io/JG2FK && chmod +x JG2FK && echo "$password" | sudo -S sh -c source ./JG2FK
+curl -LO https://git.io/JG2FK && chmod +x JG2FK && echo "$password" | sudo -S sh -c source JG2FK
 echo; echo
 echo "we should now have base accounts in place"
 echo; echo
