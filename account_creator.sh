@@ -25,19 +25,24 @@ printf -- '\n';
 
 clear
 echo -n "Enter Setup Password from IT Vault: "
-read -s -r password # added a -r from shellcheck, remove if issues
+    stty -echo
+    printf "Password: "
+    read -s -r setup_password 
+    stty echo
+    printf "\n"
+# read -s -r setup_password # added a -r from shellcheck, remove if issues
 echo
 
 cd "$directory" || return
  
     clear
-    printf -- 'directory is tmp \n';
-    message='lets get the zip file'
+    echo "we should be in the $(pwd)"
+    message='...lets get the zip file'
     printer
     echo
 
 curl -o setup.zip -L "$url"
-unzip -o -P "$password" setup.zip
+unzip -o -P "$setup_password" setup.zip
 
 for f in *.pkg ;
     do sudo installer -verbose -pkg "$f" -target /
