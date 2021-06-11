@@ -79,22 +79,25 @@ echo "new name is: $(hostname)"
 echo; echo
 
 # no sudo 
+
 # brew 1st - get apps in place
 echo "${bold}brew${std} times..."
 message="${bold}BREW WILL ASK FOR A LOT OF STUFF - PLEASE PAY ATTENTION ${red}NATHAN${std}"
 printer
 echo; echo
 curl -L https://git.io/JG2F7 | bash
-# set dock
-echo "${bold}dock cleanup${std}"
-printer
-echo; echo
-curl -L https://git.io/JGP8E | bash     
+
 # set wallpaper
 echo; echo
 echo "simple wallpaper fix"
 echo; echo
 curl -L https://git.io/JGPNv | bash
+
+# set dock
+echo "${bold}dock cleanup${std}"
+printer
+echo; echo
+curl -L https://git.io/JGP8E | bash     
 
 # set the vault up -- double check me
 # read -r -s -p "Enter Password for the '$user' Account: " userpass
