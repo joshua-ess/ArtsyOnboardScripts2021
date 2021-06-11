@@ -20,12 +20,15 @@ printf -- '\n';
 }
 
 clear
+
 message="ok, lets get started... "
 printer
-        echo 
-        echo -n "Enter Admin Password: "
-        read -r -s password
-        echo "$password" | sudo -S mkdir -p /opt/artsy
+
+# get the pass
+echo 
+echo -n "Enter Admin Password: "
+read -r -s password
+echo "$password" | sudo -S mkdir -p /opt/artsy
 
 # new idea - while loop in case of bad pass
 while [[ ! -d "$directory" ]] 
