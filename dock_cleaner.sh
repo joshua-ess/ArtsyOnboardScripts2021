@@ -1,6 +1,4 @@
 #!/bin/bash
-
-directory=/tmp
 the_file=https://raw.githubusercontent.com/kcrawford/dockutil/master/scripts/dockutil
 chrome=/Applications/Google\ Chrome.app
 drive=/Applications/Google\ Drive.app 
@@ -26,7 +24,6 @@ printf -- '\n';
     printer
     echo
 
-cd "$directory" || exit
 curl -O "$the_file"
 chmod +x dockutil
 
@@ -64,3 +61,5 @@ if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [
         echo
 fi
 
+rm dockutil
+rm -- "$0"
