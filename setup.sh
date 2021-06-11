@@ -22,6 +22,10 @@ printf -- '\n';
 clear
 message="ok, lets get started... "
 printer
+        echo 
+        echo -n "Enter Admin Password: "
+        read -r -s password
+        echo "$password" | sudo -S mkdir -p /opt/artsy
 
 # new idea - while loop in case of bad pass
 while [[ ! -d "$directory" ]] 
@@ -42,7 +46,7 @@ echo "go go curl magic!"
 echo; echo
 
 # sudo + input
-# set default system accounts
+# set default system accounts - prob
 curl -LO https://git.io/JG2FK && chmod +x JG2FK && echo "$password" | sudo -S ./JG2FK
 echo; echo
 echo "we should now have base accounts in place"
