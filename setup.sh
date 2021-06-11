@@ -45,7 +45,7 @@ while [[ ! -d "$directory" ]]
         echo "$directory exists or was created!"
         echo 
 
-cd $directory  || exit
+cd "$directory" || exit
 echo "cd $directory" 
 echo "should be in the proper dir: $(pwd)"
 message="next to get the tricky sudo bits installed "
@@ -87,6 +87,9 @@ printer
 echo; echo
 curl -L https://git.io/JG2F7 | bash
 
+# dark mode
+echo "$password" | sudo -S defaults write /Library/Preferences/.GlobalPreferences.plist _HIEnableThemeSwitchHotKey -bool true
+
 # set wallpaper
 echo; echo
 echo "simple wallpaper fix"
@@ -123,7 +126,6 @@ echo "$user" >> "$file"
 fdesetup status >> "$file"
 system_profiler SPHardwareDataType >> "$file"
 
-# scp "$file" nathan@njh-pc-mba.local:~/Documents/my_drive/hardware/
 # with a server and a pass we could dump the files into place
 # then gam could snag them up and pass them on
 
