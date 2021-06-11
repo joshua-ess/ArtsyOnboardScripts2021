@@ -1,6 +1,6 @@
 #!/bin/bash
 # vars
-directory=/tmp/
+directory=/opt/artsy
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
@@ -24,8 +24,8 @@ printf -- '\n';
     echo
 
 clear
-echo -n "Enter Setup Password from the IT Vault in 1Pass : "
-read -s password
+echo -n "Enter Setup Password from IT Vault: "
+read -s -r password # added a -r from shellcheck, remove if issues
 echo
 
 cd "$directory" || return

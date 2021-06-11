@@ -1,11 +1,12 @@
 #!/bin/bash
 
 file=https://raw.githubusercontent.com/jasonarias/2021onboarding/main/wallpaper.png
-directory=/tmp
+directory=$HOME/.artsy
 desktoppr=/usr/local/bin/desktoppr
 error_message="desktoppr not installed, please setup apps first"
 
-cd $directory || exit
+mkdir "$directory"
+cd "$directory" || exit
 
 if [[ -f $desktoppr ]] 
     then

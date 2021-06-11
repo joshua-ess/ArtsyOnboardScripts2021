@@ -3,28 +3,13 @@
 # meraki, filevault. last 2 still very wip, rest normal wip. 
 
 # vars
-directory=/tmp
+directory=/opt/artsy
+user=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+bold=$(tput bold)  # ${bold}
+red=$(tput setaf 1) # ${red}
+std=$(tput sgr0) # ${std}
 
-# ok this script prob a curl, chmod, and ./ case. 
-
-# sudo + input
-# set default system accounts
-curl -LO https://git.io/JG2FK && chmod +x JG2FK && sudo ./JG2FK
-# set user icons
-curl -LO https://git.io/JG2bZ && chmod +x JG2bZ && sudo ./JG2bZ 
-# sudo
-# set compname
-curl -L https://git.io/JG2Fx | sudo bash
-
-# no sudo 
-# brew
-curl -L https://git.io/JG2F7 | bash
-# set dock
-curl -L https://git.io/JGP8E | bash     
-# set wallpaper
-curl -L https://git.io/JGPNv | bash
-
-# func
+# functions
 printer () {
 string=''$message''
 for ((i=0; i<=${#string}; i++)); do
@@ -34,13 +19,69 @@ for ((i=0; i<=${#string}; i++)); do
 printf -- '\n';
 }
 
-# example of func usage
-#    clear
-#    printf -- 'time for the vault...'
-#    message='GO!   '
-#    printer
-#    echo
+clear
+message="ok, lets get started... "
+printer
 
+# new idea - while loop in case of bad pass
+while [[ ! -d "$directory" ]] 
+    do
+        echo 
+        echo -n "Enter Admin Password: "
+        read -r -s password
+        echo "$password" | sudo -S mkdir -p /opt/artsy
+   done
+        echo 
+        echo "$directory exists or was created!"
+        echo 
+
+message="next to get the tricky sudo bits installed "
+printer
+echo
+echo "go go curl magic!"
+echo; echo
+
+# sudo + input
+# set default system accounts
+curl -LO https://git.io/JG2FK && chmod +x JG2FK && echo "$password" | sudo -S ./JG2FK
+echo; echo
+echo "we should now have base accounts in place"
+echo; echo
+
+# set user icons
+curl -LO https://git.io/JG2bZ && chmod +x JG2bZ && echo "$password" | sudo -S ./JG2bZ 
+echo; echo
+echo "said accounts better have a nice icon now as well"
+echo; echo
+
+# set compname
+echo "lets fix the hostname on up..."
+echo "cur name is: $(hostname)"
+curl -LO https://git.io/JG2Fx && chmod +x JG2Fx && echo "$password" | sudo -S ./JG2Fx
+echo; echo
+echo "new name is: $(hostname)"
+echo; echo
+
+# no sudo 
+# brew 1st - get apps in place
+echo "${bold}brew${std} times..."
+message="${bold}BREW WILL ASK FOR A LOT OF STUFF - PLEASE PAY ATTENTION ${red}NATHAN${std}"
+printer
+echo; echo
+curl -L https://git.io/JG2F7 | bash
+# set dock
+echo "${bold}dock cleanup${std}"
+message="${bold}ITS GUNNA BLINK A LOT ${red} ITS OK${std}"
+printer
+echo; echo
+curl -L https://git.io/JGP8E | bash     
+# set wallpaper
+echo; echo
+echo "simple wallpaper fix"
+echo; echo
+curl -L https://git.io/JGPNv | bash
+
+osascript -e 'display notification "YOU GOTTA ENABLE FILEVAULT + MERAKI - script will now force a reboot"'
 # set the vault up -- double check me
 # read -r -s -p "Enter Password for the '$user' Account: " userpass
 # printf -- '\n';
@@ -55,52 +96,13 @@ printf -- '\n';
 # sudo fdesetup add -user "$user" -usertoadd "$user"
 # fdesetup status
 
-    clear
-    printf -- '!! meraki time !!'
-    printf -- 'meraki code should be on the clipboard'
-    message='be ready for chrome 1st run'
-    printer
-    echo
-
- # meraki block
-merakiurl='https://m.meraki.com/enroll?id=169-312-5055'
-meraki_id=169-312-5055
-echo $meraki_id | pbcopy
-open -a "Google Chrome" "$merakiurl" 
-
-# open -a "Safari" "$merakiurl" 
-# osascript -e 'display notification "Script paused until profile is downloaded" with title "Meraki Profile Alert"'
-# osascript -e 'display notification "Please install the profile from Meraki "'
-# printf -- '--- Please install the profile from Meraki ---\n';
-# osascript -e 'display notification "Set Chrome as default browser and close the extra window please" with title "Set Chrome as Default"'
-         while [ ! -f "$HOME"/Downloads/meraki_sm_mdm.mobileconfig  ]
-                 do
-                   sleep 1s 
-# 		  echo "please download & install meraki profile from Chrome..."
-                 done
-# sleep 5s
-# # does not work -- mac seems to require a button push...
-# # sudo killall -9 "Google Chrome"
-# # sleep 3s
-
-sudo /usr/bin/profiles -P
-sudo /usr/bin/profiles -I -F "$HOME"/Downloads/meraki_sm_mdm.mobileconfig 
-sudo cp "$HOME"/Downloads/meraki_sm_mdm.mobileconfig $directory
-sudo /usr/bin/profiles -P
-
-    clear
-    printf -- 'creating hardware report'
-    # message='now'
-    # printer
-    echo
-
 # make an info txt and pass it to my comp/gdrive
 file=$directory/"$user"-macinfo.txt
 touch "$file"
 date > "$file"
 
-echo "$HOSTNAME" >> "$file"
-echo "$USER" >> "$file"
+echo "$(hostname)" >> "$file"
+echo "$user" >> "$file"
 fdesetup status >> "$file"
 system_profiler SPHardwareDataType >> "$file"
 
@@ -118,14 +120,7 @@ sudo softwareupdate -i -a -R
 sudo reboot
 rm -- "$0"
 
-# notes / potential code
-# get passwords
-# read -r -s -p  "Enter Password for $user : " userpass
-# printf -- '\n';
-# read -r -s -p  "Enter Password for new Admin account, be very sure of it : " adminpass
-# printf -- '\n';
-
-# my old MUNKI block
+# old munki block
 # printf -- '--- Getting Munki ---\n';
 # curl -O 10.135.10.131/munki.pkg
 # sudo installer -allowUntrusted -pkg munki.pkg -target /
@@ -136,27 +131,4 @@ rm -- "$0"
 # sudo rm munki.pkg 
 
 # meraki block
-#merakiurl='https://m.meraki.com/enroll?id=169-312-5055'
-#meraki_id=169-312-5055
-# 
-#echo $meraki_id | pbcopy
-#open -a "Google Chrome" "$merakiurl" 
-# open -a "Safari" "$merakiurl" 
-# osascript -e 'display notification "Script paused until profile is downloaded" with title "Meraki Profile Alert"'
-# osascript -e 'display notification "Please install the profile from Meraki "'
-# printf -- '--- Please install the profile from Meraki ---\n';
-# osascript -e 'display notification "Set Chrome as default browser and close the extra window please" with title "Set Chrome as Default"'
-#         while [ ! -f "$HOME"/Downloads/meraki_sm_mdm.mobileconfig  ]
-#                 do
-#                   sleep 1s 
-# 		  echo "please download & install meraki profile from Chrome..."
-#                 done
-# sleep 5s
-# # does not work -- mac seems to require a button push...
-# # sudo killall -9 "Google Chrome"
-# # sleep 3s
-# # sudo /usr/bin/profiles -P
-# # sudo /usr/bin/profiles -I -F "$HOME"/Downloads/meraki_sm_mdm.mobileconfig 
-# sudo cp "$HOME"/Downloads/meraki_sm_mdm.mobileconfig $directory
-# # sudo /usr/bin/profiles -P
 
