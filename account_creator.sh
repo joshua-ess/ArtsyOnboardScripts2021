@@ -120,7 +120,7 @@ if [ ! -f "${USERPIC}" ]; then
 fi
 # Check that the username exists - exit on error
 ${ID_CMD} "${USERNAME}" &>/dev/null || ( echo "User does not exist" && exit 1 )
-declare -r PICIMPORT="$(mktemp /tmp/${USERNAME}_dsimport.XXXXXX)" || exit 1
+# declare -r PICIMPORT="$(mktemp /tmp/${USERNAME}_dsimport.XXXXXX)" || exit 1
 printf "%s %s \n%s:%s" "${MAPPINGS}" "${ATTRS}" "${USERNAME}" "${USERPIC}" >"${PICIMPORT}"
 ${DSIMPORT_CMD} "${PICIMPORT}" /Local/Default M &&
         echo "Successfully imported ${USERPIC} for ${USERNAME}."
