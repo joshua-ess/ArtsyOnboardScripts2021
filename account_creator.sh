@@ -67,9 +67,9 @@ user=artsytech
 image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
 curl -o user.tif -L "$image"
 printf -- 'changing the user icon \n';
-sudo dscl . delete /Users/"$user" jpegphoto
-sudo dscl . delete /Users/"$user" Picture
-sudo dscl . create /Users/"$user" Picture "$directory/user.tif"
+echo "$password"| sudo -S dscl . delete /Users/"$user" jpegphoto
+echo "$password"| sudo -S dscl . delete /Users/"$user" Picture
+echo "$password"| sudo -S dscl . create /Users/"$user" Picture "$directory/user.tif"
 # from https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal/367667#367667
 set -e
 declare -x USERNAME="$user"
@@ -91,9 +91,9 @@ rm "${PICIMPORT}"
 
 user=artsyloaner
 printf -- 'changing the user icon \n';
-sudo dscl . delete /Users/"$user" jpegphoto
-sudo dscl . delete /Users/"$user" Picture
-sudo dscl . create /Users/"$user" Picture "$directory/user.tif"
+echo "$password"| sudo -S dscl . delete /Users/"$user" jpegphoto
+echo "$password"| sudo -S dscl . delete /Users/"$user" Picture
+echo "$password"| sudo -S dscl . create /Users/"$user" Picture "$directory/user.tif"
 # from https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal/367667#367667
 set -e
 declare -x USERNAME="$user"

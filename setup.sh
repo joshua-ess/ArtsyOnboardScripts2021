@@ -56,8 +56,11 @@ echo; echo
 
 # sudo + input
 # set default system accounts - prob
-curl -LO https://git.io/JG2FK && chmod +x JG2FK && echo "$password" | sudo -S sh -c source JG2FK 
+# curl -LO https://git.io/JG2FK 
+# source JG2FK 
+source <(curl -sL https://git.io/JG2FK)
 account_creator
+
 echo; echo
 echo "we should now have base accounts in place"
 echo; echo
