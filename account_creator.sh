@@ -107,6 +107,7 @@ ${DSIMPORT_CMD} "${PICIMPORT}" /Local/Default M &&
         echo "Successfully imported ${USERPIC} for ${USERNAME}."
 rm "${PICIMPORT}"
 
+# second account
 system_user=artsyloaner
 printf -- 'changing the user icon \n';
 echo "$password"| sudo -S dscl . delete /Users/"$system_user" jpegphoto
