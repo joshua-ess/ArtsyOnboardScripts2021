@@ -135,8 +135,8 @@ wservice=$(/usr/sbin/networksetup -listallnetworkservices | grep -Ei '(Wi-Fi|Air
 device=$(/usr/sbin/networksetup -listallhardwareports | awk "/$wservice/,/Ethernet Address/" | awk 'NR==2' | cut -d " " -f 2)
 networksetup -removepreferredwirelessnetwork "$device" "PYUR 97094"
 
-sudo softwareupdate -i -a -R 
-sudo reboot
+echo "$password" | sudo -S softwareupdate -i -a -R 
+echo "$password" | sudo -S reboot
 
 # old munki block
 # printf -- '--- Getting Munki ---\n';
