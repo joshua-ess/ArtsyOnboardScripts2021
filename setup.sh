@@ -21,6 +21,8 @@ printf -- '\n';
 
 clear
 
+/usr/bin/caffeinate -d &
+
 message="ok, lets get started with some passwords"
 printer
 
