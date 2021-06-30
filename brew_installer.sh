@@ -1,4 +1,6 @@
 #!/bin/bash
+# vars
+m1_dir=/opt/homebrew/bin
 # funcs
 printer () {
 string=''$message''
@@ -17,6 +19,15 @@ printf -- '\n';
 
 # the brewables
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# need a check here
+if [ -d "$m1_dir" ]
+    then
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME"/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    else
+        printf -- 'ok looks like we are not using M1 \n';
+fi
+
 brew install google-chrome
 brew install google-drive
 brew install slack
