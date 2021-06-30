@@ -131,9 +131,9 @@ system_profiler SPHardwareDataType >> "$file"
 # then gam could snag them up and pass them on
 
 # remove my home net -- NEEDS WORK
-wservice=$(/usr/sbin/networksetup -listallnetworkservices | grep -Ei '(Wi-Fi|AirPort)')
-device=$(/usr/sbin/networksetup -listallhardwareports | awk "/$wservice/,/Ethernet Address/" | awk 'NR==2' | cut -d " " -f 2)
-networksetup -removepreferredwirelessnetwork "$device" "PYUR 97094"
+# wservice=$(/usr/sbin/networksetup -listallnetworkservices | grep -Ei '(Wi-Fi|AirPort)')
+# device=$(/usr/sbin/networksetup -listallhardwareports | awk "/$wservice/,/Ethernet Address/" | awk 'NR==2' | cut -d " " -f 2)
+# networksetup -removepreferredwirelessnetwork "$device" "PYUR 97094"
 
 echo "$password" | sudo -S softwareupdate -i -a -R 
 echo "$password" | sudo -S reboot
