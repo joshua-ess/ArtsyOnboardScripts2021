@@ -35,4 +35,4 @@ brew install zoom
 brew install 1password 
 brew install notion
 brew install desktoppr
-brew install dockutil
+# brew install dockutil
