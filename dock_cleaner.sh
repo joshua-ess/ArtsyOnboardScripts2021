@@ -39,9 +39,9 @@ chmod +x dockutil
 ./dockutil --remove 'Music' ;
 ./dockutil --remove 'Podcasts' ;
 ./dockutil --remove 'TV' ;
-# ./dockutil --remove 'Pages' ;
-# ./dockutil --remove 'Numbers' ;
-# ./dockutil --remove 'Keynote' ;
+./dockutil --remove 'Pages' ;
+./dockutil --remove 'Numbers' ;
+./dockutil --remove 'Keynote' ;
 ./dockutil --remove 'Safari' ;
 
 # check for base apps and add them in
