@@ -10,7 +10,7 @@ user_dir=/Users/artsyloaner/
 directory=/tmp/
 icon_image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
-
+cd $directory
 if [ -z "$password" ] 
     then
         echo 

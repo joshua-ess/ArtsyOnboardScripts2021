@@ -24,6 +24,10 @@ Onboarding Scripts for Artsy Staff
   reset the dock to factory defaults   
   curl -L https://git.io/JGPre | bash     
     
+**reset_loaner.sh** ✓  
+  reset the loaner account   
+  curl -LO https://git.io/Juetd && chmod +x Juetd && ./Juetd
+    
 **meraki.sh**
   opens chrome to the meraki page / opens profile  
   curl -L https://git.io/JZGof |bash    
