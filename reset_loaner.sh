@@ -10,7 +10,12 @@ user_dir=/Users/artsyloaner/
 directory=/tmp/
 icon_image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
+
 cd $directory
+echo "we should now be in:"
+pwd
+
+echo "lets get some passwords sorted"
 if [ -z "$password" ] 
     then
         echo 
@@ -28,6 +33,9 @@ if [ -z "$setup_password" ]
     else
         echo "setup_password seems set"
 fi
+
+echo "check for artsyloaner"
+dscl . list Users|grep loaner 
 
 if [ -d "$user_dir" ]
     then
