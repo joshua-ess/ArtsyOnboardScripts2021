@@ -43,7 +43,7 @@ dscl . list Users|grep loaner
 
 if [ -d "$user_dir" ]
     then
-        echo "$password" | sudo /usr/bin/dscl . - delete /Users/$user_account
+        echo "$password" | sudo /usr/bin/dscl . -delete /Users/$user_account
         echo "$password" | sudo -S rm -rf "$user_dir" 
 echo 
     else    
