@@ -7,6 +7,7 @@ bold=$(tput bold)  # ${bold}
 std=$(tput sgr0) # ${std}
 adminpkg=admin.pkg
 user_dir=/Users/artsyloaner
+user_account=artsyloaner
 directory=/tmp
 icon_image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
@@ -42,7 +43,9 @@ dscl . list Users|grep loaner
 
 if [ -d "$user_dir" ]
     then
+        echo "$password" | sudo /usr/bin/dscl . - delete /Users/$user_account
         echo "$password" | sudo -S rm -rf "$user_dir" 
+echo 
     else    
         echo "no artsylonaer to clean out, moving on"
 fi
