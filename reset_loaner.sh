@@ -6,8 +6,8 @@
 bold=$(tput bold)  # ${bold}
 std=$(tput sgr0) # ${std}
 adminpkg=admin.pkg
-user_dir=/Users/artsyloaner/
-directory=/tmp/
+user_dir=/Users/artsyloaner
+directory=/tmp
 icon_image="https://github.com/jasonarias/2021onboarding/blob/main/user.tif?raw=true"
 url="https://github.com/jasonarias/2021onboarding/blob/main/setup.zip?raw=true"
 
@@ -15,7 +15,9 @@ cd $directory
 echo "we should now be in:"
 pwd
 
+echo 
 echo "lets get some passwords sorted"
+echo 
 if [ -z "$password" ] 
     then
         echo 
@@ -27,6 +29,7 @@ fi
 
 if [ -z "$setup_password" ] 
     then
+        echo 
         echo -n "Enter Setup Password from IT Vault: "
         read -s -r setup_password # added a -r from shellcheck, remove if issues
         echo
