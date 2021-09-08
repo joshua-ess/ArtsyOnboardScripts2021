@@ -89,6 +89,7 @@ if [[ $(uname -m) == 'arm64' ]]
         hdiutil attach -nobrowse googlechrome.dmg 
         echo "$password" | sudo -S cp -r /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/ 
         hdiutil unmount /Volumes/*oogle*hrome/ 
+        rm googlechrome.dmg 
     else
         echo Intel found
         echo
@@ -97,6 +98,7 @@ if [[ $(uname -m) == 'arm64' ]]
         hdiutil attach -nobrowse googlechrome.dmg 
         echo "$password" | sudo -S cp -r /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/ 
         hdiutil unmount /Volumes/*oogle*hrome/ 
+        rm googlechrome.dmg 
 fi
 
 # no sudo 
