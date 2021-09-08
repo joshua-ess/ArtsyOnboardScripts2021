@@ -28,7 +28,7 @@ if [ -d "$m1_dir" ]
         printf -- 'ok looks like we are not using M1 \n';
 fi
 
-brew install google-chrome
+# brew install google-chrome
 brew install google-drive
 brew install slack
 brew install zoom

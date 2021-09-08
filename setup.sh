@@ -80,6 +80,25 @@ echo; echo
 echo "new name is: $(hostname)"
 echo; echo
 
+if [[ $(uname -m) == 'arm64' ]]
+    then
+        echo M1 found
+        echo
+        printf -- '--- Getting Google Chrome ---\n';
+        curl -O https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg 
+        hdiutil attach -nobrowse googlechrome.dmg 
+        echo "$password" | sudo -S cp -r /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/ 
+        hdiutil unmount /Volumes/*oogle*hrome/ 
+    else
+        echo Intel found
+        echo
+        printf -- '--- Getting Google Chrome ---\n';
+        curl -O https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+        hdiutil attach -nobrowse googlechrome.dmg 
+        echo "$password" | sudo -S cp -r /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/ 
+        hdiutil unmount /Volumes/*oogle*hrome/ 
+fi
+
 # no sudo 
 
 # brew 1st - get apps in place
