@@ -105,7 +105,7 @@ fi
 
 # brew 1st - get apps in place
 echo "${bold}brew${std} times..."
-message="${bold}BREW WILL ASK FOR A LOT OF STUFF - PLEASE PAY ATTENTION ${red}NATHAN${std}"
+message="${bold}BREW WILL ASK FOR A LOT OF STUFF - PLEASE PAY ATTENTION ${red}JASON${std}"
 printer
 echo; echo
 curl -L https://git.io/JG2F7 | bash
