@@ -1,9 +1,9 @@
 #!/bin/bash
 #the_file=https://raw.githubusercontent.com/kcrawford/dockutil/master/scripts/dockutil
-chrome=/Applications/Google /Chrome.app
-drive=/Applications/Google /Drive.app 
+chrome=/Applications/Google Chrome.app
+drive=/Applications/Google Drive.app 
 slack=/Applications/Slack.app
-onepass=/Applications/1Password /7.app
+onepass=/Applications/1Password 7.app
 zoom=/Applications/zoom.us.app
 notion=/Applications/Notion.app
 error_message="base artsy apps missing, please run: curl -L https://git.io/JG2F7 | bash"
@@ -48,12 +48,12 @@ dockutil --remove 'News' ;
 # check for base apps and add them in
 if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [[ -d $onepass ]] && [[ -d $notion ]]
     then
-        dockutil --add "$chrome" --position 3 
-        dockutil --add "$drive" --position 4 
-        dockutil --add "$slack" --position 5
-        dockutil --add "$onepass" --position 6
-        dockutil --add "$zoom" --position 7 
-        dockutil --add "$notion" --position 8
+        dockutil --add "/Applications/Google Chrome.app" --position 3 
+        dockutil --add "/Applications/Google Drive" --position 4 
+        dockutil --add "/Applications/Slack.app" --position 5
+        dockutil --add "/Applications/1Password 7.app" --position 6
+        dockutil --add "/Applications/zoom.us.app" --position 7 
+        dockutil --add "/Applications/Notion.app" --position 8
     else
         echo
         echo "---"
