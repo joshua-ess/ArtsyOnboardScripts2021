@@ -1,11 +1,11 @@
 #!/bin/bash
 #the_file=https://raw.githubusercontent.com/kcrawford/dockutil/master/scripts/dockutil
-$chrome=/Applications/Google Chrome.app
-$drive=/Applications/Google Drive.app 
-$slack=/Applications/Slack.app
-$onepass=/Applications/1Password 7.app
-$zoom=/Applications/zoom.us.app
-$notion=/Applications/Notion.app
+chrome=/Applications/Google Chrome.app
+drive=/Applications/Google Drive.app 
+slack=/Applications/Slack.app
+onepass=/Applications/1Password 7.app
+zoom=/Applications/zoom.us.app
+notion=/Applications/Notion.app
 error_message="base artsy apps missing, please run: curl -L https://git.io/JG2F7 | bash"
 
 # funcs
