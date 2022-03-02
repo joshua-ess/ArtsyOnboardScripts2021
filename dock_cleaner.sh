@@ -48,12 +48,12 @@ dockutil --remove 'News' ;
 # check for base apps and add them in
 if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [[ -d $onepass ]] && [[ -d $notion ]]
     then
-        ./dockutil --add "$chrome" --position 3 
-        ./dockutil --add "$drive" --position 4 
-        ./dockutil --add "$slack" --position 5
-        ./dockutil --add "$onepass" --position 6
-        ./dockutil --add "$zoom" --position 7 
-        ./dockutil --add "$notion" --position 8
+        dockutil --add "$chrome" --position 3 
+        dockutil --add "$drive" --position 4 
+        dockutil --add "$slack" --position 5
+        dockutil --add "$onepass" --position 6
+        dockutil --add "$zoom" --position 7 
+        dockutil --add "$notion" --position 8
     else
         echo
         echo "---"
