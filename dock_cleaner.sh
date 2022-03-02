@@ -29,20 +29,21 @@ chmod +x dockutil
 
 # dockutil cleanups
 # get rid of podcasts, appletv, facetime, messages, itunes
-./dockutil --remove 'Mail' ;
-./dockutil --remove 'Contacts' ;
-./dockutil --remove 'Calendar' ;
-./dockutil --remove 'Reminders' ;
-./dockutil --remove 'Maps' ;
-./dockutil --remove 'Messages' ;
-./dockutil --remove 'FaceTime' ;
-./dockutil --remove 'Music' ;
-./dockutil --remove 'Podcasts' ;
-./dockutil --remove 'TV' ;
-./dockutil --remove 'Pages' ;
-./dockutil --remove 'Numbers' ;
-./dockutil --remove 'Keynote' ;
-./dockutil --remove 'Safari' ;
+dockutil --remove 'Mail' ;
+dockutil --remove 'Contacts' ;
+dockutil --remove 'Calendar' ;
+dockutil --remove 'Reminders' ;
+dockutil --remove 'Maps' ;
+dockutil --remove 'Messages' ;
+dockutil --remove 'FaceTime' ;
+dockutil --remove 'Music' ;
+dockutil --remove 'Podcasts' ;
+dockutil --remove 'TV' ;
+dockutil --remove 'Pages' ;
+dockutil --remove 'Numbers' ;
+dockutil --remove 'Keynote' ;
+dockutil --remove 'Safari' ;
+dockutil --remove 'News' ;
 
 # check for base apps and add them in
 if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [[ -d $onepass ]] && [[ -d $notion ]]
