@@ -24,7 +24,7 @@ printf -- '\n';
     printer
     echo
 
-curl -O "$the_file"
+# curl -O "$the_file"
 chmod +x dockutil
 
 # dockutil cleanups
