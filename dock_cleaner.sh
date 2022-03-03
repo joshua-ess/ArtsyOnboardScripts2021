@@ -46,15 +46,15 @@ dockutil --remove 'Safari' ;
 dockutil --remove 'News' ;
 
 # check for base apps and add them in
-if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [[ -d $onepass ]] && [[ -d $notion ]]
-    then
+#if [[ -d $zoom ]] && [[ -d $chrome ]] && [[ -d $drive ]] && [[ -d $slack ]] && [[ -d $onepass ]] && [[ -d $notion ]]
+   # then
         dockutil --add "/Applications/Google Chrome.app" --position 3 ;
         dockutil --add "/Applications/Google Drive" --position 4 ;
         dockutil --add "/Applications/Slack.app" --position 5 ;
         dockutil --add "/Applications/1Password 7.app" --position 6 ;
         dockutil --add "/Applications/zoom.us.app" --position 7 ;
         dockutil --add "/Applications/Notion.app" --position 8 ; 
-    else
+   # else
         echo
         echo "---"
         echo "$error_message"
