@@ -119,12 +119,7 @@ echo "simple wallpaper fix"
 echo; echo
 curl -L https://git.io/JGPNv | bash
 
-# set dock
-echo "${bold}dock cleanup${std}"
-printer
-echo; echo
-curl -LO https://git.io/JGP8E      
-chmod +x JGP8E && ./JGP8E
+
 
 # set the vault up -- double check me
 # read -r -s -p "Enter Password for the '$user' Account: " userpass
@@ -160,6 +155,13 @@ system_profiler SPHardwareDataType >> "$file"
 
 echo "$password" | sudo -S softwareupdate -i -a -R 
 echo "$password" | sudo -S reboot
+
+# set dock
+echo "${bold}dock cleanup${std}"
+printer
+echo; echo
+curl -LO https://git.io/JGP8E      
+chmod +x JGP8E && ./JGP8E
 
 # old munki block
 # printf -- '--- Getting Munki ---\n';
