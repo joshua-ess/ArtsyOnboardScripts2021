@@ -54,4 +54,8 @@ Onboarding Scripts for Artsy Staff
   removes munki install  
   curl https://raw.githubusercontent.com/jasonarias/2021onboarding/main/remove_munki.sh | sudo bash  
   curl -L https://git.io/JG2bC | sudo bash
+
+ **install Windows Image**
+ installs chocolatey + apps
+
     
