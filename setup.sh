@@ -153,15 +153,16 @@ system_profiler SPHardwareDataType >> "$file"
 # device=$(/usr/sbin/networksetup -listallhardwareports | awk "/$wservice/,/Ethernet Address/" | awk 'NR==2' | cut -d " " -f 2)
 # networksetup -removepreferredwirelessnetwork "$device" "PYUR 97094"
 
-echo "$password" | sudo -S softwareupdate -i -a -R 
-echo "$password" | sudo -S reboot
-
 # set dock
 echo "${bold}dock cleanup${std}"
 printer
 echo; echo
 curl -LO https://git.io/JGP8E      
 chmod +x JGP8E && ./JGP8E
+
+# check for software updates and reboot
+echo "$password" | sudo -S softwareupdate -i -a -R 
+echo "$password" | sudo -S reboot
 
 # old munki block
 # printf -- '--- Getting Munki ---\n';
