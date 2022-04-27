@@ -18,7 +18,7 @@ printf -- '\n';
     echo
 
 # the brewables
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 # need a check here
 if [ -d "$m1_dir" ]
     then
