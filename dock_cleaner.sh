@@ -8,6 +8,9 @@
 #notion=/Applications/Notion.app
 error_message="base artsy apps missing, please run: curl -L https://git.io/JG2F7 | bash"
 
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$(whoami)/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # funcs
 printer () {
 string=''$message''
@@ -25,7 +28,7 @@ printf -- '\n';
     echo
 
 # curl -O "$the_file"
-chmod +x dockutil
+#chmod +x dockutil
 
 # dockutil cleanups
 # get rid of podcasts, appletv, facetime, messages, itunes
