@@ -48,7 +48,7 @@ dockutil --remove 'Keynote' ;
 dockutil --remove 'Safari' ;
 dockutil --remove 'News' ;
 dockutil --add "/Applications/Google Chrome.app" --position 3 ;
-dockutil --add "/Applications/Google Drive" --position 4 ;
+dockutil --add "/Applications/Google Drive.app" --position 4 ;
 dockutil --add "/Applications/Slack.app" --position 5 ;
 dockutil --add "/Applications/1Password.app" --position 6 ;
 dockutil --add "/Applications/zoom.us.app" --position 7 ;
