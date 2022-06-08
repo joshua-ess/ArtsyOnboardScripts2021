@@ -35,5 +35,8 @@ brew install zoom
 brew install 1password 
 brew install notion
 brew install desktoppr
-brew install dockutil
+# brew install dockutil ## Installs v2.x which uses Python 2; broken in MacOS 12.3+
+## Temporary fix
+brew install --cask hpedrorodrigues/tools/dockutil
+
 
